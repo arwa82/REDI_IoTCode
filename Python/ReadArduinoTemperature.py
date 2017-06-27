@@ -4,9 +4,9 @@ import DeviceClient
 import time
 
 #Azure IoTHub Config###########
-miiothub = ''
-mikeyvalue = ''
-midevice = ''
+miiothub = 'mimtciot'
+mikeyvalue = 'kDxBsa/YO9xtmWppxWyjqIJ3P6mjejvuXKFPtaaJluw='
+midevice = 'miiotdevice'
 ###############################
 
 #generate JSON document from serial message
@@ -23,7 +23,7 @@ def configSerialPort():
 
     ser = serial.Serial() 
     ser.baudrate = 9600
-    ser.port = 'COM6'
+    ser.port = 'COM7'
     return ser
 
 #Open Serial Port
@@ -37,7 +37,7 @@ device.create_sas(600)
 while True:
     serialmessage = str(serial.readline().decode('UTF-8').replace("\r\n",""))
 
-    jsonmessage = generateJSON(serialmessage, "StudentXY")
+    jsonmessage = generateJSON(serialmessage, "MartinIhrke")
     device.send(jsonmessage.encode('UTF-8'))
     
     print("Message sent: " + jsonmessage)
